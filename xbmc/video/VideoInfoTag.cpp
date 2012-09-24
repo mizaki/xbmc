@@ -70,6 +70,7 @@ void CVideoInfoTag::Reset()
   m_iYear = 0;
   m_iSeason = -1;
   m_iEpisode = -1;
+  m_strTVDBEpisodeId.clear();
   m_iSpecialSortSeason = -1;
   m_iSpecialSortEpisode = -1;
   m_fRating = 0.0f;
@@ -570,7 +571,7 @@ void CVideoInfoTag::ParseNative(const TiXmlElement* movie, bool prioritise)
   XMLUtils::GetInt(movie, "top250", m_iTop250);
   XMLUtils::GetInt(movie, "season", m_iSeason);
   XMLUtils::GetInt(movie, "episode", m_iEpisode);
-  XMLUtils::GetString(movie, "episodeid", m_strEpisodeId);
+  XMLUtils::GetString(movie, "tvdbepisodeid", m_strTVDBEpisodeId);
   XMLUtils::GetInt(movie, "track", m_iTrack);
   XMLUtils::GetInt(movie, "displayseason", m_iSpecialSortSeason);
   XMLUtils::GetInt(movie, "displayepisode", m_iSpecialSortEpisode);
