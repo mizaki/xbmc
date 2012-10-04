@@ -130,6 +130,7 @@ public:
   int m_iBookmarkId;
   int m_iIdShow;
   int m_iIdSeason;
+  CStdString m_strTVDBEpisodeId;
   CFanart m_fanart;
   CStreamDetails m_streamDetails;
   CBookmark m_resumePoint;
