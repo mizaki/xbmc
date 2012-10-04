@@ -610,7 +610,7 @@ bool CGUIWindowPVRCommon::ShowTimerSettings(CFileItem *item)
 
 bool CGUIWindowPVRCommon::PlayRecording(CFileItem *item, bool bPlayMinimized /* = false */)
 {
-  if (item->GetPath().Left(17) != "pvr://recordings/")
+  if (!item->HasPVRRecordingInfoTag())
     return false;
 
   CStdString stream = item->GetPVRRecordingInfoTag()->m_strStreamURL;
@@ -679,7 +679,7 @@ bool CGUIWindowPVRCommon::PlayFile(CFileItem *item, bool bPlayMinimized /* = fal
 
   g_settings.m_bStartVideoWindowed = bPlayMinimized;
 
-  if (item->GetPath().Left(17) == "pvr://recordings/")
+  if (item->HasPVRRecordingInfoTag())
   {
     return PlayRecording(item, bPlayMinimized);
   }
@@ -854,6 +854,7 @@ bool CGUIWindowPVRCommon::OnContextButtonFind(CFileItem *item, CONTEXT_BUTTON bu
       m_parent->SetActiveView(m_parent->m_windowSearch);
       m_parent->m_windowSearch->UpdateData();
       m_parent->SetLabel(m_iControlList, 0);
+      m_parent->m_viewControl.SetFocused();
     }
   }
 
